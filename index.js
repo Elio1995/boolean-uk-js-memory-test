@@ -51,16 +51,39 @@ for(let i=0; i<4; i++){
     console.log(numbersChoosen) 
        }  
     }
-setTimeout(userPlay, 2000)
+setTimeout(userPlay, 3000)
 
 function eachNumber() {
     return prompt(`Enter each number in order`)
 }
 
+// - Let them know how many they got right!
+
+function checkUserNumbers() {
+    let rightAnswers = 0;
+    for (let i = 0; i < numbers.length; i++) {
+      const computerNumbers = numbers[i];
+      const guessNumbers = numbersChoosen[i];
+      if (guessNumbers === computerNumbers) {
+        rightAnswers += 1;
+      }
+    }
+    if (rightAnswers === 0) {
+      alert(`Game Over, 0 correct numbers`);
+      tryAgain = prompt(`Would you like to try again?`);
+
+      if (tryAgain.toLowerCase() === "Ok") {
+        newNumberOfGuesses = Number(
+          prompt(
+            `Okey, great, I knew you wouldn't give up!Ler's Play again!!!`
+          )
+        );
+        getRandomInt(newNumberOfGuesses);
+      }
+    } else {
+      alert(`Great job! You found ${rightAnswers} right`);
+    }
+  }
 
 
-  
 
-
-// setInterval
-// Math.floor(Math.random() * (max - min) + min);
